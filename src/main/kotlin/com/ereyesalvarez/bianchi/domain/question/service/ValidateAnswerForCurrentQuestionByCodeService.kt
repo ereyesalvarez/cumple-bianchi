@@ -12,7 +12,7 @@ class ValidateAnswerForCurrentQuestionByCodeService(private val getCurrentStepAg
 
     override fun execute(answer: String, code: String): Boolean {
         val aggregateStep = getCurrentStepAggregateForCodeUseCase.execute(code)
-        if(aggregateStep.step.type != StepType.QUESTION){
+        if(aggregateStep.step.type != StepType.QUESTION  && aggregateStep.step.type != StepType.GIFT){
             log.error("try to validate question for: ${aggregateStep.step.index} by $code and is ${aggregateStep.step.type}")
             return false
         }

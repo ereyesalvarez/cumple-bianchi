@@ -24,8 +24,8 @@ class StepResource(
     fun incrementStep(@Context ctx: SecurityContext, answer: String): StepAggregate {
         val code: String = ctx.userPrincipal.name
         val aggregate = getCurrentStepAggregateForCodeUseCase.execute(code)
-        if (aggregate.step.type == StepType.QUESTION) {
-            throw QuestionException("cant increment question type")
+        if (aggregate.step.type == StepType.QUESTION || aggregate.step.type == StepType.GIFT) {
+            throw QuestionException("cant increment question or GIFT type")
         }
         if (aggregate.step.type!== StepType.COMPLETED){
             incrementStepNumberForCodePort.execute(code)

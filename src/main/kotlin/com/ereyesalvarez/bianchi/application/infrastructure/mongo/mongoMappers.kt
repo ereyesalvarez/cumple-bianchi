@@ -7,7 +7,7 @@ fun StepEntity.toDomain(): Step {
     val stepType = StepType.valueOf(type ?: throw QuestionException("error at mapping"))
     var question: Question? = null
     var fact: Fact? = null
-    if (stepType == StepType.QUESTION) {
+    if (stepType == StepType.QUESTION || stepType == StepType.GIFT) {
         val questionType = QuestionType.valueOf(questionType ?: throw QuestionException("error at mapping"))
         var domainOptions: Set<Option>? = null
         if (questionType == QuestionType.OPTION) {
@@ -21,7 +21,7 @@ fun StepEntity.toDomain(): Step {
             domainOptions
         )
     }
-    if (stepType == StepType.FACT) {
+    if (stepType == StepType.FACT || stepType == StepType.COMPLETED) {
         fact = Fact(
             id.toString(),
             text ?: throw QuestionException("error at mapping"),
