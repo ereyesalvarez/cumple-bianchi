@@ -1,7 +1,7 @@
-package com.ereyesalvarez.bianchi.application.infrastructure.security;
+package com.ereyesalvarez.bianchi.application.infrastructure.security
 
+import com.ereyesalvarez.bianchi.application.infrastructure.config.JWTProperties
 import com.ereyesalvarez.bianchi.application.infrastructure.mongo.CodeEntity
-import com.ereyesalvarez.poverty.application.infrastructure.config.JWTProperties
 import io.quarkus.security.UnauthorizedException
 import io.smallrye.jwt.build.Jwt
 import org.eclipse.microprofile.config.inject.ConfigProperty
@@ -29,17 +29,17 @@ class SecurityService(
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
     fun validateCodeLogin(appId: String, code: String): String {
-        if(appId != "bianchi") {
+        if (appId != "bianchi") {
             log.info("Invalid login: Bad appId $appId")
             throw UnauthorizedException("Invalid login")
         }
         val matchCode = code.toUpperCase()
         val codeEntity = CodeEntity.findByCode(matchCode)
-        if(codeEntity == null){
+        if (codeEntity == null) {
             log.info("Invalid login: Code not found $code")
             throw UnauthorizedException("Invalid login")
         }
-        if(!codeEntity.active) {
+        if (!codeEntity.active) {
             log.info("Invalid login: Code $code not active")
             throw UnauthorizedException("Invalid login")
         }

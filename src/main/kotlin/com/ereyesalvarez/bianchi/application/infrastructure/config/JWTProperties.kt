@@ -1,4 +1,4 @@
-package com.ereyesalvarez.poverty.application.infrastructure.config
+package com.ereyesalvarez.bianchi.application.infrastructure.config
 
 import io.smallrye.config.ConfigMapping
 

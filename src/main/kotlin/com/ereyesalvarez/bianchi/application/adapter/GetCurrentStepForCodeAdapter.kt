@@ -1,6 +1,5 @@
 package com.ereyesalvarez.bianchi.application.adapter
 
-import com.ereyesalvarez.bianchi.application.infrastructure.mongo.CodeEntity
 import com.ereyesalvarez.bianchi.application.infrastructure.mongo.GetCodeEntityOrThrowExceptionService
 import com.ereyesalvarez.bianchi.application.infrastructure.mongo.StepEntity
 import com.ereyesalvarez.bianchi.application.infrastructure.mongo.toDomain
@@ -9,11 +8,11 @@ import com.ereyesalvarez.bianchi.domain.question.GetCurrentStepForCodePort
 import com.ereyesalvarez.bianchi.domain.question.Step
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.util.function.Predicate
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-class GetCurrentStepForCodeAdapter(private val getCodeEntityService: GetCodeEntityOrThrowExceptionService) : GetCurrentStepForCodePort {
+class GetCurrentStepForCodeAdapter(private val getCodeEntityService: GetCodeEntityOrThrowExceptionService) :
+    GetCurrentStepForCodePort {
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
     override fun execute(code: String): Step {

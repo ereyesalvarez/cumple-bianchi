@@ -5,9 +5,9 @@ import com.ereyesalvarez.bianchi.domain.question.CodeExistAndActivePort
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-class CodeExistAndActiveAdapter: CodeExistAndActivePort {
+class CodeExistAndActiveAdapter : CodeExistAndActivePort {
     override fun execute(code: String): Boolean {
-        val codeEntity = CodeEntity.findByCode(code);
+        val codeEntity = CodeEntity.findByCode(code)
         return codeEntity != null && codeEntity.active
     }
 }

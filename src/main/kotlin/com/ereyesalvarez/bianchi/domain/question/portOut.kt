@@ -1,23 +1,21 @@
 package com.ereyesalvarez.bianchi.domain.question
 
-import com.ereyesalvarez.bianchi.domain.question.Step
-
-interface GetCurrentStepForCodePort{
+interface GetCurrentStepForCodePort {
     fun execute(code: String): Step
 }
 
-interface GetStepCountForCodePort{
+interface GetStepCountForCodePort {
     fun execute(code: String): Long
 }
 
-interface IncrementStepNumberForCodePort{
+interface IncrementStepNumberForCodePort {
     fun execute(code: String)
 }
 
-interface CodeExistAndActivePort{
+interface CodeExistAndActivePort {
     fun execute(code: String): Boolean
 }
 
-interface QuestionAnswerMatchByQuestionIdPort{
+interface QuestionAnswerMatchByQuestionIdPort {
     fun execute(questionId: String, answer: String): Boolean
 }
