@@ -5,11 +5,12 @@ on:
       - master
     tags:
       - v**
-
 jobs:
   build:
     name: Compile and push
     runs-on: ubuntu-latest
+    environment:
+      name: ereyesalvarez
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
